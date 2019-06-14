@@ -1,14 +1,14 @@
 library(Rcpp)
 library(ggplot2)
 library(dplyr)
- 
+
 opt = theme(legend.position  = "none",
             panel.background = element_rect(fill="white"),
             axis.ticks       = element_blank(),
             panel.grid       = element_blank(),
             axis.title       = element_blank(),
             axis.text        = element_blank())
- 
+
 cppFunction('DataFrame createTrajectory(int n, double x0, double y0, 
             double a, double b, double c, double d) {
             // create the columns
@@ -24,14 +24,14 @@ cppFunction('DataFrame createTrajectory(int n, double x0, double y0,
             return DataFrame::create(_["x"]= x, _["y"]= y);
             }
             ')
- 
+
 a=-1.24458046630025
 b=-1.25191834103316 
 c=-1.81590817030519 
 d=-1.90866735205054
- 
+
 df=createTrajectory(10000000, 0, 0, a, b, c, d)
- 
+
 png("Clifford.png", units="px", width=1600, height=1600, res=300)
 ggplot(df, aes(x, y)) + geom_point(color="black", shape=46, alpha=.01) + opt
 dev.off()
