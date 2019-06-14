@@ -30,7 +30,7 @@ b=-1.25191834103316
 c=-1.81590817030519 
 d=-1.90866735205054
 
-df=createTrajectory(10000000, 0, 0, a, b, c, d)
+df=createTrajectory(10000000, 0, 0, a, b, c, d) 
 
 png("Clifford.png", units="px", width=1600, height=1600, res=300)
 ggplot(df, aes(x, y)) + geom_point(color="black", shape=46, alpha=.01) + opt
